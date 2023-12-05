@@ -41,19 +41,18 @@ import com.example.roomsiswa.navigasi.DestinasiNavigasi
 import com.example.roomsiswa.navigasi.SiswaTopAppBar
 import com.example.roomsiswa.ui.theme.model.HomeViewModel
 
-object DestinasiHome : DestinasiNavigasi{
+object DestinasiHome: DestinasiNavigasi {
     override val route = "home"
     override val titleRes = R.string.app_name
 }
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
-    navigateToItemEntry:()-> Unit,
+    navigateToItemEntry: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ){
-    val  scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
+    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -64,7 +63,7 @@ fun HomeScreen(
                 scrollBehavior = scrollBehavior
             )
         },
-        floatingActionButton ={
+        floatingActionButton = {
             FloatingActionButton(
                 onClick = navigateToItemEntry,
                 shape = MaterialTheme.shapes.medium,
@@ -72,11 +71,11 @@ fun HomeScreen(
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,
-                    contentDescription = stringResource(R.string.entry_siswa)
+                    contentDescription = stringResource(id = R.string.entry_siswa)
                 )
             }
         },
-    ){
+    ) {
             innerPadding ->
         val uiStateSiswa by viewModel.homeUiState.collectAsState()
         BodyHome(
@@ -87,34 +86,32 @@ fun HomeScreen(
         )
     }
 }
-
 @Composable
 fun BodyHome(
-    itemSiswa: List<Siswa>,
-    modifier: Modifier = Modifier){
-
+    itemSiswa : List<Siswa>,
+    modifier: Modifier = Modifier
+){
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
-    ){
+    ) {
         if(itemSiswa.isEmpty()){
             Text(
-                text = stringResource(R.string.deskripsi_no_item),
+                text = stringResource(id = R.string.deskripsi_no_item),
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.titleLarge
+                style = MaterialTheme.typography.titleLarge,
             )
-        } else{
-            listSiswa(
+        }else{
+            ListSiswa(
                 itemSiswa = itemSiswa,
                 modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.padding_small))
             )
         }
-
     }
 }
 @Composable
-fun listSiswa(
-    itemSiswa: List<Siswa>,
+fun ListSiswa(
+    itemSiswa : List<Siswa>,
     modifier: Modifier = Modifier
 ){
     LazyColumn(modifier = Modifier){

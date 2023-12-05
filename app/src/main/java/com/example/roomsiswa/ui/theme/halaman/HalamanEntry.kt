@@ -29,21 +29,21 @@ import com.example.roomsiswa.navigasi.DestinasiNavigasi
 import com.example.roomsiswa.navigasi.SiswaTopAppBar
 import kotlinx.coroutines.launch
 
-object DestinasiEntry: DestinasiNavigasi{
-    override val route ="item_entry"
+object DestinasiEntry: DestinasiNavigasi {
+    override val route = "item_entry"
     override val titleRes = R.string.entry_siswa
 }
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EntrySiswaScreen(
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: EntryViewModel = viewModel(factory = PenyediaViewModel.Factory)
+    viewModel: EntryViewModel = viewModel(factory = PenyediaViewModel.Factory )
 ){
     val coroutineScope = rememberCoroutineScope()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
-    Scaffold (
+
+    Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             SiswaTopAppBar(
@@ -52,15 +52,15 @@ fun EntrySiswaScreen(
                 scrollBehavior = scrollBehavior
             )
         }
-    ){
-        innerPadding ->
+    ) {
+            innerPadding ->
         EntrySiswaBody(
             uiStateSiswa = viewModel.uiStateSiswa,
             onSiswaValueChange = viewModel::updateUiState,
             onSaveClick = {
-                coroutineScope.launch{
+                coroutineScope.launch {
                     viewModel.saveSiswa()
-                    navigateBack()
+                    navigateBack
                 }
             },
             modifier = Modifier
@@ -68,6 +68,7 @@ fun EntrySiswaScreen(
                 .verticalScroll(rememberScrollState())
                 .fillMaxWidth()
         )
+
     }
 }
 @Composable
@@ -76,11 +77,11 @@ fun EntrySiswaBody(
     onSiswaValueChange: (DetailSiswa) -> Unit,
     onSaveClick: () -> Unit,
     modifier: Modifier = Modifier
-) {
-    Column(
+){
+    Column (
         verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_Large)),
         modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium))
-    ) {
+    ){
         FormInputSiswa(
             detailSiswa = uiStateSiswa.detailSiswa,
             onValueChange = onSiswaValueChange,
@@ -96,7 +97,6 @@ fun EntrySiswaBody(
         }
     }
 }
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormInputSiswa(
@@ -105,13 +105,13 @@ fun FormInputSiswa(
     onValueChange: (DetailSiswa) -> Unit = {},
     enabled: Boolean = true
 ){
-    Column (
+    Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
-    ){
+    ) {
         OutlinedTextField(
             value = detailSiswa.nama,
-            onValueChange ={onValueChange(detailSiswa.copy(telpon = it))},
+            onValueChange ={onValueChange(detailSiswa.copy(nama = it))},
             label = { Text(stringResource(R.string.nama)) },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
@@ -119,7 +119,7 @@ fun FormInputSiswa(
         )
         OutlinedTextField(
             value = detailSiswa.alamat,
-            onValueChange ={onValueChange(detailSiswa.copy(telpon = it))},
+            onValueChange ={onValueChange(detailSiswa.copy(alamat = it))},
             label = { Text(stringResource(R.string.alamat)) },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
@@ -133,7 +133,7 @@ fun FormInputSiswa(
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled
         )
-        if (enabled){
+        if (enabled) {
             Text(
                 text = stringResource(id = R.string.required_field),
                 modifier = Modifier.padding(start = dimensionResource(id = R.dimen.padding_medium))
@@ -142,6 +142,7 @@ fun FormInputSiswa(
         Divider(
             thickness = dimensionResource(id = R.dimen.padding_small),
             modifier = Modifier.padding(bottom = dimensionResource(id = R.dimen.padding_medium))
+
         )
-        }
     }
+}

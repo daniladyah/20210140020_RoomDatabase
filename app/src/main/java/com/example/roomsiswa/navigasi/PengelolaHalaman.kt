@@ -41,8 +41,7 @@ fun SiswaTopAppBar(
                 IconButton(onClick = navigateUp) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
-                        contentDescription = stringResource(id = R.string.back)
-                    )
+                        contentDescription = stringResource(id = R.string.back))
                 }
             }
         }
