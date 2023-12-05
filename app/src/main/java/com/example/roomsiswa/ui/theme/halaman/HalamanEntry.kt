@@ -23,6 +23,7 @@ import com.example.roomsiswa.data.EntryViewModel
 import com.example.roomsiswa.data.PenyediaViewModel
 import com.example.roomsiswa.data.UIStateSiswa
 import com.example.roomsiswa.navigasi.DestinasiNavigasi
+import kotlinx.coroutines.launch
 
 object DestinasiEntry: DestinasiNavigasi{
     override val route ="item_entry"
@@ -53,7 +54,7 @@ fun EntrySiswaScreen(
             uiStateSiswa = viewModel.uiStateSiswa,
             onSiswaValueChange = viewModel::updateUiState,
             onSaveClick = {
-                coroutineScope.Launch{
+                coroutineScope.launch{
                     viewModel.saveSiswa()
                     navigateBack()
                 }
@@ -90,4 +91,15 @@ fun EntrySiswaBody(
             Text(text = stringResource(id = R.string.btn_submit))
         }
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun FormInputSiswa(
+    detailSiswa: DetailSiswa,
+    modifier: Modifier = Modifier,
+    onValueChange: (DetailSiswa) -> Unit = {},
+    enabled: Boolean = true
+){
+
 }
