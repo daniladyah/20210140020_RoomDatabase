@@ -1,8 +1,5 @@
 package com.example.roomsiswa.navigasi
 
-interface DestinasiNavigasi {
+interface DestinasiNavigasi{
 
-    val route: String
-
-    val titleRes: Int
 }
