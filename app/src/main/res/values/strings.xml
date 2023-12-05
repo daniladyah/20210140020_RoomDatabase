@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">RoomSiswa</string>
+    <string name="entry_siswa">\n</string>
+    <string name="btn_submit" />
+    <string name="nama" />
+    <string name="alamat" />
+    <string name="telpon" />
+    <string name="required_field" />
+    <string name="deskripsi_no_item" />
+    <string name="back" />
+</resources>
