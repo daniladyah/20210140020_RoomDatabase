@@ -1,5 +1,4 @@
 # 20210140020_RoomDatabase
-<img width="242" alt="Cuplikan layar 2023-12-05 192304" src="https://github.com/daniladyah/20210140020_RoomDatabase/assets/114916300/01d41db3-f10f-4ef7-9f80-3db42a369baa">
 
 <img width="215" alt="Cuplikan layar 2023-12-05 203830" src="https://github.com/daniladyah/20210140020_RoomDatabase/assets/114916300/78f6f48e-4747-42cb-8187-05a3ff581a98">
 
