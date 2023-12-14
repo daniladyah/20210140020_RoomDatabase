@@ -12,6 +12,7 @@ import com.example.roomsiswa.data.UIStateSiswa
 import com.example.roomsiswa.data.toSiswa
 import com.example.roomsiswa.data.toUiStateSiswa
 import com.example.roomsiswa.repositori.RepositoriSiswa
+import com.example.roomsiswa.ui.theme.halaman.ItemEditDestination
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -24,7 +25,7 @@ class EditViewModel (
     var siswaUiState by mutableStateOf(UIStateSiswa())
         private set
 
-    private  val itemId: Int = 0
+    private  val itemId: Int = checkNotNull(savedStateHandle[ItemEditDestination.itemIdArg])
 
     init {
         viewModelScope.launch {
